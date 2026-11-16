@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>gomonke – play your PS1 games in the browser</title>
+  <meta name="description" content="Load your own PlayStation game file and play it in your browser. Nothing is uploaded.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="./">go<span>monke</span> <i aria-hidden="true">🐵</i></a>
+    <nav><a href="#how">How it works</a><a href="#legal">Legal</a></nav>
+  </header>
+
+  <main id="lobby" class="wrap">
+    <section class="hero">
+      <h1>Play your PS1 games in the browser</h1>
+      <p>Drop in your own game file and go. Everything runs on your device, and your files are never uploaded.</p>
+    </section>
+
+    <section id="drop" class="drop" tabindex="0" role="button" aria-label="Choose a game file">
+      <div class="disc" aria-hidden="true"></div>
+      <h2>Insert a game</h2>
+      <p>Drag a file here or click to browse</p>
+      <small>.chd &nbsp; .pbp &nbsp; .iso &nbsp; .img &nbsp; .bin &nbsp; .zip &nbsp; .7z</small>
+      <input id="game-file" type="file" accept=".chd,.pbp,.iso,.img,.bin,.zip,.7z" hidden>
+    </section>
+    <p id="msg" class="msg" role="status" hidden></p>
+
+    <details class="bios">
+      <summary>Optional: add your own BIOS</summary>
+      <p>Some games run better with a real PlayStation BIOS file (for example <code>scph1001.bin</code>) dumped from your own console. Pick it before you load a game.</p>
+      <label class="btn alt">Choose BIOS<input id="bios-file" type="file" accept=".bin" hidden></label>
+      <span id="bios-name"></span>
+    </details>
+
+    <section id="how" class="info">
+      <h2>How it works</h2>
+      <ol>
+        <li>Get a game file from a disc you own. <code>.chd</code> or <code>.pbp</code> single files work best.</li>
+        <li>Drop it above. The emulator loads in your browser.</li>
+        <li>Save states are stored in your browser, so keep using the same one.</li>
+      </ol>
+      <p>Have a <code>.cue</code> + <code>.bin</code> pair? Convert it to a single <code>.chd</code> with the free <em>chdman</em> tool first.</p>
+    </section>
+
+    <section id="legal" class="info">
+      <h2>Legal</h2>
+      <p>gomonke does not host, store or provide games or BIOS files. You must own the games you play. Fan-made, not affiliated with Sony.</p>
+    </section>
+  </main>
+
+  <section id="stage" class="stage" hidden>
+    <div class="bar">
+      <strong id="title"></strong>
+      <button id="eject" class="btn alt">Eject</button>
+    </div>
+    <div id="game"></div>
+  </section>
+
+  <footer>gomonke is a fan project. Emulation powered by EmulatorJS.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
